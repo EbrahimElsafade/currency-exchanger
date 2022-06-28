@@ -1,0 +1,16 @@
+<section class="converter-landing">
+  <div class="main-container">
+    <div class="section-border">
+      <h1 class="header">Currency Exchanger</h1>
+      <app-currency-converter-form (popolarCurrenciesResponceOutput)="getNotification($event)"
+        [childMessage]="parentMessage"></app-currency-converter-form>
+    </div>
+
+    <div class="currencies">
+      <div class="currencies-box" *ngFor="let cu of popolarCurrenciesInput">
+        <p>{{(cu.value * amountInput).toFixed(2)}}</p>
+        <h2>{{cu.key}}</h2>
+      </div>
+    </div>
+  </div>
+</section>

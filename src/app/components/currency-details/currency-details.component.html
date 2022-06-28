@@ -1,0 +1,31 @@
+<section class="converter-landing">
+  <div class="main-container">
+    <div class="section-border">
+      <h1 class="header">{{currencyName}}</h1>
+      <app-currency-converter-form [childMessage]="parentMessage"></app-currency-converter-form>
+    </div>
+    <div style="display: block;" *ngIf="months.length > 0">
+      <canvas baseChart
+        [datasets]="chartData"
+        [labels]="months"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+    <div style="display: block;" *ngIf="months.length > 0">
+      <canvas baseChart
+        [datasets]="chartData"
+        [labels]="months"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="lineChartType">
+      </canvas>
+    </div>
+  </div>
+</section>
+
+
+

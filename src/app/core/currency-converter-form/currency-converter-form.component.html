@@ -1,0 +1,93 @@
+
+<form [formGroup]="changeCurrencyForm">
+
+  <div class="row">
+    <div class="col-large-4">
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input
+          type="number"
+          placeholder="Amount"
+          id="amount"
+          name="amount"
+          formControlName="amount"
+          [ngClass]="{ 'is-invalid': submitted && form.amount.errors }"
+        >
+        <div *ngIf="submitted && form.amount.errors" class="invalid-feedback">
+          <div *ngIf="form.amount.errors.required">Title is required</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-large-8">
+      <div class="row">
+        <div class="col-large-5">
+          <div class="form-group">
+            <label for="from">From</label>
+            <select
+             id="from"
+             formControlName="from"
+             [ngClass]="{ 'is-invalid': submitted && form.from.errors }"
+            >
+              <option *ngFor="let c of currency" [value]="c" [disabled]="isSelected">{{c}}</option>
+            </select>
+            <div *ngIf="submitted && form.from.errors" class="invalid-feedback">
+              <div *ngIf="form.from.errors.required">Title is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-large-2">
+          <div class="button-switcher">
+            <a class="switch-btn" (click)="switchSelectedValue()">
+              <img src="../../../assets/icons/repeat.svg">
+            </a>
+          </div>
+        </div>
+        <div class="col-large-5">
+          <div class="form-group">
+            <label for="to">To</label>
+            <select
+            id="to"
+            formControlName="to"
+            [ngClass]="{ 'is-invalid': submitted && form.to.errors }"
+          >
+              <option *ngFor="let c of currency" [value]="c">{{c}}</option>
+            </select>
+            <div *ngIf="submitted && form.to.errors" class="invalid-feedback">
+              <div *ngIf="form.to.errors.required">Title is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <div class="col-large-12">
+      <div class="form-group text-right">
+        <button (click)="convertCurrency()">Convert</button>
+
+      </div>
+    </div>
+  </div>
+
+
+</form>
+
+<ng-container *ngIf="convertedCurrency">
+  <div class="see-results">
+    <div class="result">
+      <p>1.00 {{convertedCurrency.query.from}} = {{convertedCurrency.info.rate.toFixed(2) }} {{convertedCurrency.query.to}}</p>
+    </div>
+    <div  class="result big-font">
+      <p>{{convertedCurrency.result.toFixed(2) }} {{convertedCurrency.query.to}}</p>
+      <a class="more-btn" [routerLink]="['/currency-details', amount, from, to]" *ngIf="childMessage && convertedCurrency" >More details</a>
+    </div>
+  </div>
+
+
+</ng-container>
+
+
+
