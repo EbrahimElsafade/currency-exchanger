@@ -50,19 +50,16 @@ export class CurrencyDetailsComponent implements OnInit {
     });
   }
 
-  //charts data I should remove static data
+  //charts data
   public lineChartType: ChartType = 'line';
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
 
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Currancy', stack: 'c' }
-  ];
 
 
   //here I was thinking to get all currencies name from the form the child component to reduce server requests but I think we need to subscribe here because if user came from header
