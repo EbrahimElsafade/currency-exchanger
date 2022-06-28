@@ -18,7 +18,8 @@ export class CurrencyConverterComponent implements OnInit {
 
   }
 
-  getNotification($event){
+  //get currencies from child component
+  getPopolarCurrencies($event){
     this.popolarCurrenciesInput = Object.entries($event.rates).map(([key, value]) => ({key,value}));
     this.amountInput = $event.amount;
   }
